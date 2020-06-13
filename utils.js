@@ -13,12 +13,22 @@ function createTextElement(text) {
     }
   };
 }
-function createDOMnode(type) {
+// create & set the DOM node
+function createDOMnode(fiber) {
+  const { type, props } = fiber;
+  let dom;
   if (type === "TEXT_ELEMENT") {
-    return document.createTextNode("");
+    dom = document.createTextNode("");
   } else {
-    return document.createElement(type);
+    dom = document.createElement(type);
   }
+  // set all the props to the node except its children
+  Object.entries(props).forEach(([key, val]) => {
+    if (key !== "children") {
+      dom[key] = val;
+    }
+  });
+  return dom;
 }
 
 export { getAllChildren, createDOMnode, createTextElement };
