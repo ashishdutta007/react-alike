@@ -13,7 +13,7 @@ function createElement(type, props, ...children) {
 
 // render: is where React changes the DOM
 function render(element, container) {
-  console.log("render");
+  console.log("render() called");
 
   // set nextUnitOfWork to the root of the fiber tree
   // root fiber element
@@ -27,6 +27,7 @@ function render(element, container) {
 
 // loop to poll for render tasks
 function workLoop(deadline) {
+  console.log("RIC cb - exec", new Date().getTime());
   while (nextUnitOfWork && deadline.timeRemaining() >= 1) {
     nextUnitOfWork = performUnitWork(nextUnitOfWork);
   }
@@ -78,6 +79,6 @@ function performUnitWork(fiber) {
 
 let nextUnitOfWork = null;
 requestIdleCallback(workLoop);
-console.log("yellow");
+console.log("freact module import - exec");
 
 export { createElement, render };
