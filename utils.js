@@ -15,7 +15,7 @@ function createTextElement(text) {
 }
 function createDOMnode(type) {
   if (type === "TEXT_ELEMENT") {
-    return document.createTextNode();
+    return document.createTextNode("");
   } else {
     return document.createElement(type);
   }

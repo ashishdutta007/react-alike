@@ -1,14 +1,14 @@
 import "./style.css";
-import Freact from "./Freact";
+import { createElement, render } from "./Freact";
 
-const element = Freact.createElement(
+const element = createElement(
   "div",
   { id: "foo" },
-  Freact.createElement("a", null, "bar"),
-  Freact.createElement("br")
+  createElement("a", null, "bar"),
+  createElement("br")
 );
 const container = document.getElementById("app");
-Freact.render(element, container);
+render(element, container);
 
 // tell babel to use Didact’s createElement instead of React’s?
 // when babel transpiles the JSX it will use the function we define.
