@@ -46,8 +46,9 @@ function performUnitWork(fiber) {
   if (fiber.parent) {
     fiber.parent.dom.appendChild(fiber.dom);
   }
-  //3. Create new fiber for each children
-  let prevSibling = null;
+  //3. Create new fiber for each children react elements
+  // temp for previous child of fiber
+  let prevChild = null;
   fiber.props.children.map((child, index) => {
     const newFiber = {
       dom: null,
@@ -59,11 +60,9 @@ function performUnitWork(fiber) {
     if (index === 0) {
       fiber.child = newFiber;
     } else {
-      // ?????
-      prevSibling.sibling = newFiber;
+      prevChild.sibling = newFiber;
     }
-    // ?????
-    prevSibling = newFiber;
+    prevChild = newFiber;
   });
 
   // 5. Return the nextUnitOfWork
