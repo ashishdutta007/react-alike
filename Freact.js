@@ -27,8 +27,8 @@ function render(element, container) {
 
 // loop to poll for render tasks
 function workLoop(deadline) {
-  console.log("RIC cb - exec", new Date().getTime());
   while (nextUnitOfWork && deadline.timeRemaining() >= 1) {
+    console.log("RIC cb - exec", new Date().getTime());
     nextUnitOfWork = performUnitWork(nextUnitOfWork);
   }
   requestIdleCallback(workLoop);
