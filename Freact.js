@@ -1,5 +1,6 @@
 import { getAllChildren, createDOMnode } from "./utils";
 
+// generates React element from JSX
 function createElement(type, props, ...children) {
   return {
     type: type,
@@ -10,9 +11,12 @@ function createElement(type, props, ...children) {
   };
 }
 
+// render: is where React changes the DOM
 function render(element, container) {
   console.log("render");
 
+  // set nextUnitOfWork to the root of the fiber tree
+  // root fiber element
   nextUnitOfWork = {
     dom: container,
     props: {
