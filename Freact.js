@@ -12,6 +12,7 @@ function createElement(type, props, ...children) {
 }
 
 // render: is where React changes the DOM
+// element : react element {type, props: {children}}
 function render(element, container) {
   console.log("render() called");
 
@@ -26,6 +27,7 @@ function render(element, container) {
 }
 
 // loop to poll for render tasks
+// nextUnitOfWork : render task
 function workLoop(deadline) {
   while (nextUnitOfWork && deadline.timeRemaining() >= 1) {
     console.log("RIC cb - exec", new Date().getTime());
@@ -34,7 +36,7 @@ function workLoop(deadline) {
   requestIdleCallback(workLoop);
 }
 
-// actual rendering of fiber(element) to DOM
+// performing render task of fiber(element) to DOM
 function performUnitWork(fiber) {
   // 1. Create dom node
   if (fiber.dom == null) {
