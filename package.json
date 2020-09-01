@@ -3,5 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "author": "@theokeles050",
-  "dependencies": {}
+  "dependencies": {},
+  "keywords": [],
+  "description": "React lib barebones implementation"
 }
